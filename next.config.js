@@ -6,7 +6,7 @@ const nextConfig = {
         },
     },
     compiler: {
-        removeConsole: true,
+        removeConsole: false,
     },
     images: { domains: ['i.scdn.co'] },
     poweredByHeader: false,

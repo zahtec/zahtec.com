@@ -25,6 +25,7 @@ main {
     padding: 1rem;
     border-radius: 10px;
     font-size: 0.95rem;
+    will-change: filter;
     animation: none;
     transition: filter 0.3s ease, transform 0.3s ease;
     filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.7));
@@ -44,6 +45,7 @@ main {
 
 .card > a svg > rect,
 .card > a svg > path {
+    will-change: width, transform;
     transition: opacity 0.1s ease, transform 0.3s ease, width 0.3s ease;
 }
 

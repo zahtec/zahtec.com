@@ -19,8 +19,8 @@ export default function Project({ fullName, name, desc, tags, imageAlt, link, ov
                     {tags.map(tag => {
                         return <Tag fullName={tag.fullName} name={tag.name} fontaw={tag.fontaw! && tag.fontaw} key={tag.name} />;
                     })}
-                    {overlay && <Overlay />}
                 </div>
+                {overlay && <Overlay />}
             </div>
         </div>
     );

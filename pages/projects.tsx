@@ -1,8 +1,8 @@
 import Overlay from '../components/projects/Overlay';
 import Project from '../components/projects/Project';
+import { useEffect } from 'react';
 import Tag from '../components/projects/Tag';
 import { useRouter } from 'next/router.js';
-import { useEffect } from 'react';
 import Head from 'next/head.js';
 
 export type StoredTag = {
@@ -107,30 +107,41 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
         const LANGS = ['python', 'node', 'nextjs', 'react', 'html', 'css', 'js'];
 
         document.querySelectorAll('.overlays').forEach((overlay: HTMLElement) => {
+            const isFilter = overlay.classList.contains('overlays-filter');
+            let realParent: HTMLElement;
+
+            if (isFilter) realParent = overlay.parentElement!.querySelector('#filters')!;
+            else realParent = overlay.parentElement!.querySelector('.tags')!;
+
             Array.from(overlay.children).forEach((e: HTMLElement, i) => {
                 e.addEventListener('click', () => {
-                    overlay.parentElement!.scrollBy({ left: i % 2 === 1 ? 130 : -130, behavior: 'smooth' });
+                    realParent.scrollBy({ left: i % 2 === 1 ? 130 : -130, behavior: 'smooth' });
                 });
                 e.addEventListener('keyup', (ev: KeyboardEvent) => {
                     if (ev.key !== 'Enter') return;
-                    overlay.parentElement!.scrollBy({ left: i % 2 === 1 ? 130 : -130, behavior: 'smooth' });
+                    realParent.scrollBy({ left: i % 2 === 1 ? 130 : -130, behavior: 'smooth' });
                 });
+                e.addEventListener('mouseover', () => {
+                    if (!(window.innerWidth >= 800)) return;
+                    overlay.parentElement!.classList.add('hover');
+                });
+                e.addEventListener('mouseout', () => {
+                    if (!(window.innerWidth >= 800)) return;
+                    overlay.parentElement!.classList.remove('hover');
+                });
+                if (isFilter) e.style.transform = `translateX(${i % 2 === 1 ? '1rem' : '-1rem'})`;
             });
 
-            overlay.parentElement!.addEventListener('mouseover', () => {
+            if (isFilter) return;
+
+            realParent.addEventListener('mouseover', () => {
                 if (!(window.innerWidth >= 800)) return;
                 overlay.parentElement!.classList.add('hover');
-                Array.from(overlay.children).forEach((e: HTMLElement) => {
-                    e.style.transform = 'none';
-                });
             });
 
-            overlay.parentElement!.addEventListener('mouseout', () => {
+            realParent.addEventListener('mouseout', () => {
                 if (!(window.innerWidth >= 800)) return;
                 overlay.parentElement!.classList.remove('hover');
-                Array.from(overlay.children).forEach((e: HTMLElement, i) => {
-                    e.style.transform = `translateX(${i % 2 === 0 ? '-1' : '1'}rem)`;
-                });
             });
         });
 
@@ -224,8 +235,8 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
                         <Tag fullName="HTML" name="html" fontaw="html5" filter={true} />
                         <Tag fullName="CSS" name="css" fontaw="css3" filter={true} />
                         <Tag fullName="JS/TS" name="js" fontaw="js" filter={true} />
-                        <Overlay />
                     </div>
+                    <Overlay filter={true} />
                 </div>
                 <div id="projects">
                     {projects.map(project => {

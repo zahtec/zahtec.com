@@ -43,11 +43,12 @@ main > div:first-of-type {
     position: relative;
 }
 
-#filters > .overlays {
+.overlays.overlays-filter {
     background: linear-gradient(90deg, var(--color-main) 3%, transparent 20%, transparent 80%, var(--color-main) 97%);
+    bottom: 1rem;
 }
 
-#filters > .overlays > div {
+.overlays.overlays-filter > div {
     width: 2rem;
 }
 
@@ -141,10 +142,11 @@ main > div:first-of-type {
 }
 
 .overlays {
-    position: fixed;
+    position: absolute;
     justify-content: space-between;
     background: linear-gradient(90deg, var(--color-accent) 6%, transparent 20%, transparent 80%, var(--color-accent) 94%);
-    right: 0;
+    left: 0;
+    bottom: 2rem;
     width: 100%;
     height: 4rem;
     opacity: 1;
@@ -327,17 +329,17 @@ main > div:first-of-type {
 }
 
 @media (min-width: 700px) {
-    .tags > span {
+    .overlays {
         background: linear-gradient(90deg, var(--color-accent) 3%, transparent 10%, transparent 90%, var(--color-accent) 97%);
     }
 
-    #filters > .overlays {
+    .overlays.overlays-filter {
         background: linear-gradient(90deg, var(--color-main) 3%, transparent 10%, transparent 90%, var(--color-main) 97%);
     }
 }
 
 @media (min-width: 800px) {
-    #filters .overlays {
+    .overlays.overlays-filter {
         background: linear-gradient(90deg, var(--color-main) 2%, transparent 6%, transparent 94%, var(--color-main) 98%);
         opacity: 1;
     }
@@ -362,23 +364,23 @@ main > div:first-of-type {
         opacity: 0;
     }
 
-    .tags.hover > .overlays {
+    .wrapper.hover > .overlays {
         opacity: 1;
     }
 
-    .tags.hover .overlays > i:first-of-type {
+    .wrapper.hover .overlays > i:first-of-type {
         transform: translateX(-1rem);
     }
 
-    .tags.hover .overlays > i:last-of-type {
+    .wrapper.hover .overlays > i:last-of-type {
         transform: translateX(1rem);
     }
 
-    .tags.hover .overlays > i:first-child {
+    .wrapper.hover .overlays > i:first-child {
         transform: translateX(1rem);
     }
 
-    .tags.hover .overlays > i:last-child {
+    .wrapper.hover .overlays > i:last-child {
         transform: translateX(-1rem);
     }
 
@@ -390,11 +392,11 @@ main > div:first-of-type {
         margin-right: 0;
     }
 
-    .tags.hover > .tag:first-of-type {
+    .wrapper.hover > .tags > .tag:first-of-type {
         margin-left: 3rem;
     }
 
-    .tags.hover > .tag:last-of-type {
+    .wrapper.hover > .tags > .tag:last-of-type {
         margin-right: 3rem;
     }
 }
