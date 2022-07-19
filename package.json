@@ -1,0 +1,33 @@
+{
+    "name": "portfolio",
+    "version": "0.1.0",
+    "private": true,
+    "description": "My portfolio",
+    "main": "app.js",
+    "author": "zahtec <32808999+zahtec@users.noreply.github.com> (https://www.zahtec.com/)",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@tweenjs/tween.js": "^18.6.4",
+        "next": "^12.2.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "sharp": "^0.30.7",
+        "swr": "^1.3.0",
+        "three": "^0.142.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.4",
+        "@types/react": "^18.0.15",
+        "@types/three": "^0.141.0",
+        "eslint": "^8.20.0",
+        "eslint-config-next": "^12.2.2",
+        "typescript": "^4.7.4"
+    }
+}

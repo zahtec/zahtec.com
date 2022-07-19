@@ -1,0 +1,146 @@
+.rich-pres {
+    width: 100%;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 4rem 1rem 2rem 1rem;
+    background-color: var(--color-accent);
+}
+
+.rich-pres > i {
+    font-size: 6rem;
+    position: absolute;
+    top: 1rem;
+    z-index: -1;
+    mask-image: linear-gradient(0deg, transparent 25%, black);
+    -webkit-mask-image: linear-gradient(0deg, transparent 25%, black);
+}
+
+.rich-pres > h1 {
+    font-size: 2.5rem;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+}
+
+.rich-pres > div {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+}
+
+.rich-button {
+    padding: 0.6rem;
+    border-radius: 5px;
+    font-size: 1.1em;
+    width: 70%;
+    background-color: var(--color-disgreen);
+    overflow: hidden;
+}
+
+#icon-wrapper {
+    position: relative;
+    height: min-content;
+    width: min-content;
+    margin-right: 1rem;
+}
+
+#icon-wrapper img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10px;
+}
+
+#status-ring {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    top: 75%;
+    left: 80%;
+    border: 4px solid var(--color-accent);
+    background-color: var(--color-accentwo);
+}
+
+#status-wrapper > h1 {
+    font-size: 1.2rem;
+}
+
+#discord span {
+    color: var(--color-accentwo);
+}
+
+#discord span::after {
+    display: none;
+}
+
+#art-wrapper {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem;
+    position: relative;
+    flex-shrink: 0;
+}
+
+#art-wrapper > img:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+    border-radius: 10px;
+}
+
+#art-wrapper > img:nth-child(2) {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    clip: rect(0, 0rem, 6rem, 0);
+    border-radius: 10px;
+}
+
+#album-wrapper {
+    overflow: hidden;
+}
+
+#album-wrapper > h1 {
+    font-size: 1.2rem;
+}
+
+#album-wrapper > em {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+}
+
+#progress-wrapper > p {
+    position: relative;
+    font-weight: 400;
+    color: var(--color-accentwo);
+}
+
+#progress-wrapper > p:first-child {
+    position: absolute;
+}
+
+#progress-wrapper > p:last-child {
+    margin-left: 2.4rem;
+}
+
+@media (min-width: 400px) {
+    main {
+        padding-top: 9rem;
+    }
+
+    #status-wrapper > h1 {
+        font-size: 1.7rem;
+    }
+
+    #album-wrapper > h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 600px) {
+    #intro.play {
+        top: -2rem;
+    }
+}

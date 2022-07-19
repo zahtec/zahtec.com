@@ -1,0 +1,179 @@
+main {
+    padding-top: 7rem;
+}
+
+.card {
+    width: 100%;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    transition: filter 0.3s ease;
+}
+
+.card > p {
+    margin: 1rem 0;
+}
+
+.card > a {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    animation: none;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.7));
+}
+
+.card > a:hover,
+.card > a:focus-visible {
+    filter: drop-shadow(0 0.8rem 1.3rem rgba(0, 0, 0, 0.9));
+    -webkit--filter: drop-shadow(0 0.8rem 1.3rem rgba(0, 0, 0, 0.9));
+    transform: translateY(-0.2rem);
+}
+
+.card > a > svg {
+    width: 1em;
+    margin-left: 0.5em;
+}
+
+.card > a svg > rect,
+.card > a svg > path {
+    transition: opacity 0.1s ease, transform 0.3s ease, width 0.3s ease;
+}
+
+.card > a > svg.hover > rect {
+    width: 2.4rem;
+    opacity: 1;
+}
+
+.card > a > svg.hover > path {
+    transform: translateX(1.8rem);
+}
+
+.card > i {
+    font-size: 12rem;
+    position: absolute;
+    bottom: -4rem;
+    right: -2rem;
+    z-index: -1;
+    color: rgb(255, 255, 255, 0.4);
+}
+
+.card > svg {
+    width: 12rem;
+    position: absolute;
+    bottom: -4rem;
+    right: -2rem;
+    z-index: -1;
+    fill: rgb(255, 255, 255, 0.4);
+}
+
+#html {
+    background: linear-gradient(140deg, var(--color-orange), var(--color-darkorange));
+    border: 0.1rem solid var(--color-orange);
+    filter: drop-shadow(0 0 0.5rem var(--color-orange));
+}
+
+#html:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-orange));
+}
+
+#css {
+    background: linear-gradient(140deg, var(--color-blue), var(--color-darkblue));
+    border: 0.1rem solid var(--color-blue);
+    filter: drop-shadow(0 0 0.5rem var(--color-blue));
+}
+
+#css:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-blue));
+}
+
+#js {
+    background: linear-gradient(140deg, var(--color-yellow), var(--color-darkyellow));
+    border: 0.1rem solid var(--color-yellow);
+    filter: drop-shadow(0 0 0.5rem var(--color-yellow));
+}
+
+#js:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-yellow));
+}
+
+#js > h1 {
+    font-size: 1.6rem;
+}
+
+#node {
+    background: linear-gradient(140deg, var(--color-green), var(--color-darkgreen));
+    border: 0.1rem solid var(--color-green);
+    filter: drop-shadow(0 0 0.5rem var(--color-green));
+}
+
+#node:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-green));
+}
+
+#deno {
+    background: linear-gradient(140deg, var(--color-brown), var(--color-darkbrown));
+    border: 0.1rem solid var(--color-brown);
+    filter: drop-shadow(0 0 0.5rem var(--color-brown));
+}
+
+#deno:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-brown));
+}
+
+#python {
+    background: linear-gradient(140deg, var(--color-teal), var(--color-darkteal));
+    border: 0.1rem solid var(--color-teal);
+    filter: drop-shadow(0 0 0.5rem var(--color-teal));
+}
+
+#python:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-teal));
+}
+
+#bash {
+    background: linear-gradient(140deg, var(--color-red), var(--color-darkred));
+    border: 0.1rem solid var(--color-red);
+    filter: drop-shadow(0 0 0.5rem var(--color-red));
+}
+
+#bash:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-red));
+}
+
+#bash > i {
+    right: -7rem;
+}
+
+#nextjs {
+    background: linear-gradient(140deg, var(--color-magenta), var(--color-darkmagenta));
+    border: 0.1rem solid var(--color-magenta);
+    filter: drop-shadow(0 0 0.5rem var(--color-magenta));
+}
+
+#nextjs:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-magenta));
+}
+
+#react {
+    background: linear-gradient(140deg, var(--color-purple), var(--color-darkpurple));
+    border: 0.1rem solid var(--color-purple);
+    filter: drop-shadow(0 0 0.5rem var(--color-purple));
+}
+
+#react:hover {
+    filter: drop-shadow(0 0 1.1rem var(--color-purple));
+}
+
+@media (min-width: 600px) {
+    #intro.play {
+        top: -2rem;
+    }
+}
