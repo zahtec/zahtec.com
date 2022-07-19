@@ -1,15 +1,13 @@
-import Overlay from '../components/projects/Overlay';
 import Project from '../components/projects/Project';
-import { useEffect } from 'react';
-import Tag from '../components/projects/Tag';
+import TagRow from '../components/projects/TagRow';
 import { useRouter } from 'next/router.js';
+import { useEffect, useState, useRef } from 'react';
 import Head from 'next/head.js';
 
 export type StoredTag = {
     name: string;
     fullName: string;
     fontaw?: string;
-    filter?: boolean;
 };
 
 export type StoredProject = {
@@ -22,44 +20,44 @@ export type StoredProject = {
     overlay?: boolean;
 };
 
-export function getStaticProps() {
-    const tags = {
-        python: {
-            name: 'python',
-            fullName: 'Python',
-            fontaw: 'python',
-        },
-        node: {
-            name: 'node',
-            fullName: 'Node.js',
-            fontaw: 'node-js',
-        },
-        nextjs: {
-            name: 'nextjs',
-            fullName: 'Next.js',
-        },
-        react: {
-            name: 'react',
-            fullName: 'React',
-            fontaw: 'react',
-        },
-        html: {
-            name: 'html',
-            fullName: 'HTML',
-            fontaw: 'html5',
-        },
-        css: {
-            name: 'css',
-            fullName: 'CSS',
-            fontaw: 'css3',
-        },
-        js: {
-            name: 'js',
-            fullName: 'JS/TS',
-            fontaw: 'js',
-        },
-    };
+const tags = {
+    python: {
+        name: 'python',
+        fullName: 'Python',
+        fontaw: 'python',
+    },
+    node: {
+        name: 'node',
+        fullName: 'Node.js',
+        fontaw: 'node-js',
+    },
+    nextjs: {
+        name: 'nextjs',
+        fullName: 'Next.js',
+    },
+    react: {
+        name: 'react',
+        fullName: 'React',
+        fontaw: 'react',
+    },
+    html: {
+        name: 'html',
+        fullName: 'HTML',
+        fontaw: 'html5',
+    },
+    css: {
+        name: 'css',
+        fullName: 'CSS',
+        fontaw: 'css3',
+    },
+    js: {
+        name: 'js',
+        fullName: 'JS/TS',
+        fontaw: 'js',
+    },
+};
 
+export function getStaticProps() {
     return {
         props: {
             projects: [
@@ -83,7 +81,7 @@ export function getStaticProps() {
                     name: 'portfolio',
                     fullName: 'This Portfolio',
                     desc: 'This portfolio shows off some of my best frontend skills, the animations and backend are superior and I hope you like it!',
-                    tags: [tags.nextjs, tags.react, tags.html, tags.css, tags.js],
+                    tags: [tags.node, tags.nextjs, tags.react, tags.html, tags.css, tags.js],
                     imageAlt: 'Image of the homepage of this portfolio',
                 },
                 {
@@ -101,112 +99,53 @@ export function getStaticProps() {
 }
 
 export default function Projects({ projects }: { projects: StoredProject[] }) {
+    const LANGS = ['python', 'node', 'nextjs', 'react', 'html', 'css', 'js'];
+    const [switching, setSwitching] = useState(false);
+    const [filtering, setFiltering] = useState<string[] | null>(null);
+    const wrap = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
-    useEffect(() => {
-        const LANGS = ['python', 'node', 'nextjs', 'react', 'html', 'css', 'js'];
-
-        document.querySelectorAll('.overlays').forEach((overlay: HTMLElement) => {
-            const isFilter = overlay.classList.contains('overlays-filter');
-            let realParent: HTMLElement;
-
-            if (isFilter) realParent = overlay.parentElement!.querySelector('#filters')!;
-            else realParent = overlay.parentElement!.querySelector('.tags')!;
-
-            Array.from(overlay.children).forEach((e: HTMLElement, i) => {
-                e.addEventListener('click', () => {
-                    realParent.scrollBy({ left: i % 2 === 1 ? 130 : -130, behavior: 'smooth' });
-                });
-                e.addEventListener('keyup', (ev: KeyboardEvent) => {
-                    if (ev.key !== 'Enter') return;
-                    realParent.scrollBy({ left: i % 2 === 1 ? 130 : -130, behavior: 'smooth' });
-                });
-                e.addEventListener('mouseover', () => {
-                    if (!(window.innerWidth >= 800)) return;
-                    overlay.parentElement!.classList.add('hover');
-                });
-                e.addEventListener('mouseout', () => {
-                    if (!(window.innerWidth >= 800)) return;
-                    overlay.parentElement!.classList.remove('hover');
-                });
-                if (isFilter) e.style.transform = `translateX(${i % 2 === 1 ? '1rem' : '-1rem'})`;
-            });
-
-            if (isFilter) return;
-
-            realParent.addEventListener('mouseover', () => {
-                if (!(window.innerWidth >= 800)) return;
-                overlay.parentElement!.classList.add('hover');
-            });
-
-            realParent.addEventListener('mouseout', () => {
-                if (!(window.innerWidth >= 800)) return;
-                overlay.parentElement!.classList.remove('hover');
-            });
-        });
-
-        let selected: string[] = [];
-        const wrap = document.getElementById('projects');
-        const projects: NodeListOf<HTMLElement> = document.querySelectorAll('.project');
-
-        const refresh = () => {
-            wrap!.classList.add('switching');
-            if (selected.length) router.push(`projects?f=${selected.join('+')}`);
-            else router.push('projects');
-
-            setTimeout(() => {
-                projects.forEach(project => {
-                    let tags: string | string[] | null = project.getAttribute('z-tags');
-                    if (!tags) return;
-                    tags = tags.split(',');
-
-                    let hide = false;
-                    selected.forEach(tag => {
-                        if (!tags!.includes(tag)) hide = true;
-                    });
-
-                    if (hide) project.classList.add('hide');
-                    else project.classList.remove('hide');
-                });
-
-                wrap!.classList.remove('switching');
-            }, 200);
-        };
-
-        let params: string | string[] | null = new URLSearchParams(window.location.search).get('f');
-        if (params) params = params.split(' ').filter(e => LANGS.includes(e));
-        const filters: NodeListOf<HTMLElement> = document.querySelectorAll('#filters > .tag');
-
-        if (params) {
-            selected = params as string[];
-            filters.forEach(filter => {
-                if (params!.includes(filter.id)) filter.classList.add('selected');
-            });
-            refresh();
+    const clickHandler = (name: string) => {
+        if (filtering!.includes(name)) {
+            setFiltering(filtering!.filter(tag => tag !== name));
+        } else {
+            setFiltering([...filtering!, name]);
         }
+    };
 
-        document.querySelectorAll('#filters > .tag').forEach(filter => {
-            filter.addEventListener('click', () => {
-                if (filter.classList.contains('selected')) {
-                    selected = selected.filter(e => e !== filter.id);
-                } else {
-                    selected.push(filter.id);
-                }
-                filter.classList.toggle('selected');
-                refresh();
+    useEffect(() => {
+        if (!filtering || !wrap.current) return;
+        setSwitching(true);
+        if (filtering.length) router.push(`projects?f=${filtering.join('+')}`);
+        else router.push('projects');
+
+        setTimeout(() => {
+            Array.from(wrap.current!.children).forEach(project => {
+                let tags: string | string[] | null = project.getAttribute('z-tags');
+                if (!tags) return;
+                tags = tags.split(',');
+
+                let hide = false;
+                filtering.forEach(tag => {
+                    if (!tags!.includes(tag)) hide = true;
+                });
+
+                if (hide) project.classList.add('hide');
+                else project.classList.remove('hide');
             });
 
-            filter.addEventListener('keyup', (ev: KeyboardEvent) => {
-                if (ev.key !== 'Enter') return;
-                if (filter.classList.contains('selected')) {
-                    selected = selected.filter(e => e !== filter.id);
-                } else {
-                    selected.push(filter.id);
-                }
-                filter.classList.toggle('selected');
-                refresh();
-            });
-        });
+            setSwitching(false);
+        }, 200);
+    }, [filtering]);
+
+    useEffect(() => {
+        let params: string | string[] | null = new URLSearchParams(window.location.search).get('f');
+        if (params && typeof params === 'string') {
+            params = params.split(' ').filter(e => LANGS.includes(e));
+            setFiltering(params);
+        } else {
+            setFiltering([]);
+        }
     }, []);
 
     return (
@@ -227,18 +166,9 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
                         <i className="fa-solid fa-filter"></i>
                         <p>Filter</p>
                     </div>
-                    <div id="filters" className="flex no-scroll tags">
-                        <Tag fullName="Python" name="python" fontaw="python" filter={true} />
-                        <Tag fullName="Node.js" name="node" fontaw="node-js" filter={true} />
-                        <Tag fullName="Next.js" name="nextjs" filter={true} />
-                        <Tag fullName="React" name="react" fontaw="react" filter={true} />
-                        <Tag fullName="HTML" name="html" fontaw="html5" filter={true} />
-                        <Tag fullName="CSS" name="css" fontaw="css3" filter={true} />
-                        <Tag fullName="JS/TS" name="js" fontaw="js" filter={true} />
-                    </div>
-                    <Overlay filter={true} />
+                    <TagRow tags={Object.values(tags)} clickHandler={clickHandler} filtering={filtering ? filtering : []} />
                 </div>
-                <div id="projects">
+                <div id="projects" ref={wrap} style={switching ? { opacity: 0, transform: 'translateY(2rem)' } : {}}>
                     {projects.map(project => {
                         return <Project {...project} key={project.name} />;
                     })}

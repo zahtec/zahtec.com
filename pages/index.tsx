@@ -38,25 +38,26 @@ export default function Home({ age }: { age: number }) {
     };
 
     useEffect(() => {
-        const welcome = { el: document.getElementById('welcome')!, msgs: ['Hi!', 'Hello!', 'Hey!', 'Howdy!'] };
+        const title = document.getElementById('welcome')!;
+        const msgs = ['Hi!', 'Hello!', 'Hey!', 'Howdy!'];
 
         const textAnim = () => {
             setTimeout(() => {
-                welcome.el!.style.opacity = '0';
+                title.style.opacity = '0';
                 setTimeout(() => {
-                    const ind = welcome.msgs.indexOf(welcome.el.innerText);
-                    welcome.el.innerText = welcome.msgs[ind === 4 ? 1 : ind + 1];
-                    welcome.el.style.opacity = '1';
+                    const ind = msgs.indexOf(title.innerText);
+                    title.innerText = msgs[ind === 3 ? 1 : ind + 1];
+                    title.style.opacity = '1';
                     textAnim();
                 }, 300);
             }, Math.trunc(Math.random() * 10000) + 3000);
         };
 
-        welcome.el.addEventListener(
+        title.addEventListener(
             'animationend',
             () => {
-                welcome.el.classList.remove('load-anim');
-                welcome.el.style.opacity = '1';
+                title.classList.remove('load-anim');
+                title.style.opacity = '1';
                 textAnim();
             },
             { once: true },

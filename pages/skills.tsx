@@ -1,5 +1,4 @@
 import Skill from '../components/skills/Skill';
-import { useEffect } from 'react';
 import Head from 'next/head';
 
 export type StoredSkill = {
@@ -76,18 +75,6 @@ export function getStaticProps() {
 }
 
 export default function Projects({ skills }: { skills: StoredSkill[] }) {
-    useEffect(() => {
-        document.querySelectorAll('.card > a').forEach((e: HTMLElement) => {
-            e.addEventListener('mouseover', () => {
-                if (e.children[1]) e.children[1].classList.add('hover');
-            });
-
-            e.addEventListener('mouseout', () => {
-                if (e.children[1]) e.children[1].classList.remove('hover');
-            });
-        });
-    }, []);
-
     return (
         <>
             <Head>

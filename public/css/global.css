@@ -123,11 +123,11 @@ span[z-color]::after {
     border-bottom: 3px solid;
     border-radius: 1px;
     will-change: transform;
-    transition: top 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 span[z-color]:hover::after {
-    top: 100%;
+    transform: translateY(3px);
 }
 
 span[z-color='red'] {
@@ -190,6 +190,7 @@ span[z-color='magenta'] {
 #overlay {
     display: flex;
     justify-content: center;
+    transition: margin-left 0.8s ease;
 }
 
 #intro {
@@ -198,8 +199,9 @@ span[z-color='magenta'] {
     top: calc(50vh - (100vw / 3) / 2);
     position: absolute;
     aspect-ratio: 3;
+    will-change: margin;
     height: min-content;
-    transition: top 0.8s ease, margin-left 0.8s ease, width 0.8s ease, opacity 0.8s ease;
+    transition: top 0.8s ease, width 0.8s ease, opacity 0.8s ease;
 }
 
 #intro.play {
@@ -322,9 +324,12 @@ main {
         top: calc(50vh - 166.66px / 2);
     }
 
+    #overlay.play {
+        margin-left: 5rem;
+    }
+
     #intro.play {
         width: calc(100% - 5rem);
-        margin-left: 2.5rem;
         top: -1rem;
     }
 

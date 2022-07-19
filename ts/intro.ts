@@ -7,6 +7,7 @@ import { Tween, update, Easing } from '@tweenjs/tween.js';
 export default function intro() {
     const ele: HTMLElement = document.getElementById('intro')!;
     const icon: HTMLElement = document.querySelector('nav > img')!;
+    const overlay: HTMLElement = document.getElementById('overlay')!;
 
     const scene = new Scene();
     const cam = new PerspectiveCamera(80, 3, 1, 57);
@@ -96,6 +97,7 @@ export default function intro() {
                         scene.remove(obj);
 
                         setTimeout(() => {
+                            overlay.classList.add('play');
                             ele.classList.add('play');
 
                             // Wait for text to reach top of page

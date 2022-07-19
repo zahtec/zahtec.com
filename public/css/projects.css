@@ -26,6 +26,15 @@ main > div:first-of-type {
     transform: translateY(2rem);
 }
 
+.filter {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.filter.selected {
+    opacity: 1;
+}
+
 #filter {
     font-size: 1.4rem;
 }
@@ -50,19 +59,6 @@ main > div:first-of-type {
 
 .overlays.overlays-filter > div {
     width: 2rem;
-}
-
-#filters > .tag {
-    opacity: 0.8;
-    transition: opacity 0.3s ease, margin 0.3s ease;
-}
-
-#filters > .tag.selected {
-    opacity: 1;
-}
-
-#filters > .tag:hover {
-    filter: none;
 }
 
 .project {
@@ -159,7 +155,7 @@ main > div:first-of-type {
     align-items: center;
     cursor: pointer;
     pointer-events: all;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     color: rgb(255, 255, 255, 0.5);
     height: 100%;
     width: 3rem;
@@ -180,7 +176,7 @@ main > div:first-of-type {
     height: 4rem;
     scroll-snap-align: center;
     border-radius: 10px;
-    transition: filter 0.3s ease, margin 0.3s ease;
+    transition: filter 0.3s ease, margin 0.3s ease, opacity 0.3s ease;
 }
 
 .tag > i {
@@ -360,43 +356,11 @@ main > div:first-of-type {
         padding-top: 16rem;
     }
 
-    .overlays {
-        opacity: 0;
-    }
-
-    .wrapper.hover > .overlays {
-        opacity: 1;
-    }
-
-    .wrapper.hover .overlays > i:first-of-type {
-        transform: translateX(-1rem);
-    }
-
-    .wrapper.hover .overlays > i:last-of-type {
-        transform: translateX(1rem);
-    }
-
-    .wrapper.hover .overlays > i:first-child {
-        transform: translateX(1rem);
-    }
-
-    .wrapper.hover .overlays > i:last-child {
-        transform: translateX(-1rem);
-    }
-
-    .tag:first-of-type {
+    .tags > .tag:first-of-type {
         margin-left: 0;
     }
 
-    .tag:last-of-type {
+    .tags > .tag:last-of-type {
         margin-right: 0;
-    }
-
-    .wrapper.hover > .tags > .tag:first-of-type {
-        margin-left: 3rem;
-    }
-
-    .wrapper.hover > .tags > .tag:last-of-type {
-        margin-right: 3rem;
     }
 }

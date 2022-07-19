@@ -1,6 +1,5 @@
 import { StoredProject } from '../../pages/projects';
-import Overlay from './Overlay';
-import Tag from './Tag';
+import TagRow from './TagRow';
 
 export default function Project({ fullName, name, desc, tags, imageAlt, link, overlay = true }: StoredProject) {
     return (
@@ -15,12 +14,7 @@ export default function Project({ fullName, name, desc, tags, imageAlt, link, ov
                     )}
                 </div>
                 <p>{desc}</p>
-                <div className={`tags flex no-scroll${overlay ? '' : ' no-hover'}`}>
-                    {tags.map(tag => {
-                        return <Tag fullName={tag.fullName} name={tag.name} fontaw={tag.fontaw! && tag.fontaw} key={tag.name} />;
-                    })}
-                </div>
-                {overlay && <Overlay />}
+                <TagRow tags={tags} overlay={overlay} />
             </div>
         </div>
     );

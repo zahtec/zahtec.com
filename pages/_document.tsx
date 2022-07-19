@@ -10,8 +10,8 @@ export default function Document() {
                 <meta name="robots" content="noarchive,noimageindex" />
 
                 <meta name="og:url" content="https://www.zahtec.com" />
-                <meta name="og:image" content="images/icon.png" />
-                <meta name="og:image:secure_url" content="images/icon.png" />
+                <meta name="og:image" content="images/favicon.png" />
+                <meta name="og:image:secure_url" content="mages/favicon.png" />
                 <meta name="og:image:width" content="200" />
                 <meta name="og:image:height" content="200" />
                 <meta name="og:image:alt" content="Zahtec logo" />
@@ -19,7 +19,7 @@ export default function Document() {
 
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:creator" content="@zahtec" />
-                <meta name="twitter:image" content="images/icon.png" />
+                <meta name="twitter:image" content="images/favicon.png" />
 
                 <meta name="theme-color" content="rgb(10, 10, 10)" />
 
