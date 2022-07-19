@@ -4,15 +4,14 @@
 
 ## 🥪 Stack
 
-- Node.js
-- Next.js
-- React
+-   Node.js
+-   Next.js
+-   React
 
 ## 🔧 Upcoming Changes
 
-- Switch to [preact](https://preactjs.com/)
-- Switch to [tailwind](https://tailwindcss.com/)
-- Finish boids.zahtec.com which is a Rust [PWA](https://web.dev/progressive-web-apps/) with an optimized 3D boids simulation
+-   Switch to [tailwind](https://tailwindcss.com/)
+-   Finish boids.zahtec.com which is a Rust [PWA](https://web.dev/progressive-web-apps/) with an optimized 3D boids simulation
 
 ## ✅ Suggestions?
 
