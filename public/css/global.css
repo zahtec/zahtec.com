@@ -122,6 +122,7 @@ span[z-color]::after {
     width: 100%;
     border-bottom: 3px solid;
     border-radius: 1px;
+    will-change: transform;
     transition: top 0.3s ease;
 }
 
