@@ -1,4 +1,5 @@
 import { Tween, Easing } from '@tweenjs/tween.js';
+import Underline from '../components/Underline';
 import { useEffect, MouseEvent } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -17,22 +18,22 @@ export default function Home({ age }: { age: number }) {
     const skilMove = { perc: -1, perc2: 0 };
     const abouMove = { perc: -1, perc2: 0 };
 
-    const linkHover = (e: MouseEvent, move: { perc: number; perc2: number }, c1: string, c2: string) => {
+    const linkHover = (e: MouseEvent, move: { perc: number; perc2: number }) => {
         new Tween(move)
             .to({ perc: 50, perc2: 100 }, 800)
             .easing(Easing.Exponential.InOut)
             .onUpdate(() => {
-                (e.target as HTMLElement).style.background = `linear-gradient(140deg, var(--color-${c2}) ${move.perc}%, var(--color-${c1}) ${move.perc2}%, var(--color-${c2}))`;
+                (e.target as HTMLElement).style.background = `linear-gradient(140deg, var(--tw-gradient-to) ${move.perc}%, var(--tw-gradient-from) ${move.perc2}%, var(--tw-gradient-to))`;
             })
             .start();
     };
 
-    const linkLeave = (e: MouseEvent, move: { perc: number; perc2: number }, c1: string, c2: string) => {
+    const linkLeave = (e: MouseEvent, move: { perc: number; perc2: number }) => {
         new Tween(move)
             .to({ perc: -1, perc2: 0 }, 800)
             .easing(Easing.Exponential.InOut)
             .onUpdate(() => {
-                (e.target as HTMLElement).style.background = `linear-gradient(140deg, var(--color-${c2}) ${move.perc}%, var(--color-${c1}) ${move.perc2}%, var(--color-${c2}))`;
+                (e.target as HTMLElement).style.background = `linear-gradient(140deg, var(--tw-gradient-to) ${move.perc}%, var(--tw-gradient-from) ${move.perc2}%, var(--tw-gradient-to))`;
             })
             .start();
     };
@@ -46,7 +47,7 @@ export default function Home({ age }: { age: number }) {
                 title.style.opacity = '0';
                 setTimeout(() => {
                     const ind = msgs.indexOf(title.innerText);
-                    title.innerText = msgs[ind === 3 ? 1 : ind + 1];
+                    title.innerText = msgs[ind === 3 ? 0 : ind + 1];
                     title.style.opacity = '1';
                     textAnim();
                 }, 300);
@@ -77,44 +78,44 @@ export default function Home({ age }: { age: number }) {
                 <meta name="twitter:description" content="I'm Zahtec, an aspiring software engineer and looking for a job in the industry. Welcome to my portfolio!" />
             </Head>
             <main>
-                <h1 className="load-anim welcome" id="welcome">
+                <h1 className="load-anim transition-opacity duration-300 text-4xl font-extrabold text-center mb-4" id="welcome">
                     Hi!
                 </h1>
-                <h1 className="load-anim">I'm Zahtec</h1>
+                <h1 className="load-anim text-5xl mb-4 font-extrabold text-center">I'm Zahtec</h1>
                 <p className="load-anim">
-                    I'm a {age} year old developer from the <span z-color="blue">Bay Area</span> in <span z-color="magenta">California</span>. To see my <span z-color="green">projects</span> or to <span z-color="orange">contact me</span>, tap on any of the links below.
+                    I'm a <Underline color="text-purple">{age}</Underline> year old developer from the <Underline color="text-blue">Bay Area</Underline> in <Underline color="text-magenta">California</Underline>. To see my <Underline color="text-green">projects</Underline> or to contact me, follow any of the links below.
                 </p>
-                <div className="links">
+                <div className="flex flex-col items-center my-8 gap-4 w-full">
                     <Link href="/projects">
-                        <a className="link all flex-cent load-anim no-select" onMouseEnter={e => linkHover(e, projMove, 'accentwo', 'accent')} onMouseLeave={e => linkLeave(e, projMove, 'accentwo', 'accent')}>
-                            <i className="fa-solid fa-cube"></i>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-accentwo to-accent border-xs border-accentwo drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, projMove)} onMouseLeave={e => linkLeave(e, projMove)}>
+                            <i className="fa-solid fa-cube mr-2"></i>
                             <p>All Projects</p>
                         </a>
                     </Link>
                     <Link href="/presence">
-                        <a className="link presence flex-cent load-anim no-select" onMouseEnter={e => linkHover(e, presMove, 'green', 'darkgreen')} onMouseLeave={e => linkLeave(e, presMove, 'green', 'darkgreen')}>
-                            <i className="fa-solid fa-bolt"></i>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-green to-green-dark border-xs border-green drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, presMove)} onMouseLeave={e => linkLeave(e, presMove)}>
+                            <i className="fa-solid fa-bolt mr-2"></i>
                             <p>Presence</p>
                         </a>
                     </Link>
                     <Link href="/skills">
-                        <a className="link skills flex-cent load-anim no-select" onMouseEnter={e => linkHover(e, skilMove, 'magenta', 'darkmagenta')} onMouseLeave={e => linkLeave(e, skilMove, 'magenta', 'darkmagenta')}>
-                            <i className="fa-solid fa-wrench"></i>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-magenta to-magenta-dark border-xs border-magenta drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, skilMove)} onMouseLeave={e => linkLeave(e, skilMove)}>
+                            <i className="fa-solid fa-wrench mr-2"></i>
                             <p>Skills</p>
                         </a>
                     </Link>
                     <Link href="/about">
-                        <a className="link about flex-cent load-anim no-select" onMouseEnter={e => linkHover(e, abouMove, 'orange', 'darkorange')} onMouseLeave={e => linkLeave(e, abouMove, 'orange', 'darkorange')}>
-                            <i className="fa-solid fa-circle-info"></i>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-orange to-orange-dark border-xs border-orange drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, abouMove)} onMouseLeave={e => linkLeave(e, abouMove)}>
+                            <i className="fa-solid fa-circle-info mr-2"></i>
                             <p>About</p>
                         </a>
                     </Link>
                 </div>
                 <p className="load-anim">
-                    Welcome to my portfolio! I built this website trying to show off as much as I know as well as keeping the <span z-color="purple">UI</span> and <span z-color="red">UX</span> smooth and <span z-color="green">feature-rich</span>.
+                    I built this website trying to show off as much as I know as well as keeping the <Underline color="text-orange">UI</Underline> and <Underline color="text-red">UX</Underline> smooth and <Underline color="text-yellow">feature-rich</Underline>.
                 </p>
                 <p className="load-anim">
-                    To contact me, I recommend <span z-color="teal">Discord</span>, but email also works as well. Have fun and <span z-color="brown">thanks for viewing</span>!
+                    To contact me, I recommend <Underline color="text-teal">Discord</Underline>, but email also works as well. Have fun and <Underline color="text-brown">thanks for viewing</Underline>!
                 </p>
             </main>
         </>

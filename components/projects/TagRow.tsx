@@ -28,16 +28,17 @@ export default function TagRow({ overlay = true, tags, clickHandler, filtering }
 
     return (
         <>
-            <div id={clickHandler ? 'filters' : undefined} className={`tags flex no-scroll${overlay ? '' : ' no-hover'}`} onScroll={scrollHandler} ref={tagsElement}>
+            <div className="gap-4 overflow-auto snap-x snap-proximity py-4 relative mx-auto flex no-scroll" onScroll={scrollHandler} ref={tagsElement}>
                 {tags.map(tag => {
-                    if (clickHandler) return <Filter fullName={tag.fullName} name={tag.name} fontaw={tag.fontaw! && tag.fontaw} key={tag.name} clickHandler={clickHandler} selected={filtering!.includes(tag.name)} />;
-                    else return <Tag fullName={tag.fullName} name={tag.name} fontaw={tag.fontaw! && tag.fontaw} key={tag.name} />;
+                    if (clickHandler) return <Filter fullName={tag.fullName} name={tag.name} fontaw={tag.fontaw! && tag.fontaw} key={tag.name} clickHandler={clickHandler} selected={filtering!.includes(tag.name)} color={tag.color} />;
+                    else return <Tag fullName={tag.fullName} name={tag.name} fontaw={tag.fontaw! && tag.fontaw} key={tag.name} color={tag.color} noMargin={tags.length === 1 || disabledArrows == 3} />;
                 })}
             </div>
             {overlay && (
                 <>
-                    <span className={`overlays flex-cent${clickHandler ? ' overlays-filter' : ''}`} style={disabledArrows === 3 ? { opacity: 0 } : {}}>
+                    <span className={`absolute flex items-center justify-between bg-overlay from-accent left-0 w-full h-20 pointer-events-none transition-opacity duration-300 ${clickHandler ? ' bottom-2 from-black' : ' bottom-6'}${disabledArrows === 3 ? ' opacity-0' : ''}`}>
                         <div
+                            className={`h-full flex items-center pointer-events-auto transition-overlay duration-300 text-white/50 w-12 hover:text-white/80 justify-start ${clickHandler ? ' w-8' : ' w-12'}${disabledArrows === 1 || disabledArrows === 3 ? ' pointer-events-none cursor-default opacity-0' : ''}`}
                             tabIndex={0}
                             onClick={() => {
                                 interactHandler(false);
@@ -46,11 +47,11 @@ export default function TagRow({ overlay = true, tags, clickHandler, filtering }
                                 if (e.key !== 'Enter') return;
                                 interactHandler(false);
                             }}
-                            style={disabledArrows === 1 || disabledArrows === 3 ? { pointerEvents: 'none', cursor: 'default', opacity: 0 } : {}}
                         >
-                            <i className="fa-solid fa-angle-left"></i>
+                            <i className={`fa-solid fa-angle-left ${clickHandler ? 'xl:transform-none' : 'ml-6'}`}></i>
                         </div>
                         <div
+                            className={`h-full flex items-center pointer-events-auto transition-overlay duration-300 text-white/50 w-12 hover:text-white/80 justify-end ${clickHandler ? ' w-8' : ' w-12'}${disabledArrows === 2 || disabledArrows === 3 ? ' pointer-events-none cursor-default opacity-0' : ''}`}
                             tabIndex={0}
                             onClick={() => {
                                 interactHandler(true);
@@ -59,9 +60,8 @@ export default function TagRow({ overlay = true, tags, clickHandler, filtering }
                                 if (e.key !== 'Enter') return;
                                 interactHandler(true);
                             }}
-                            style={disabledArrows === 2 || disabledArrows === 3 ? { pointerEvents: 'none', cursor: 'default', opacity: 0 } : {}}
                         >
-                            <i className="fa-solid fa-angle-right"></i>
+                            <i className={`fa-solid fa-angle-right ${clickHandler ? 'xl:transform-none' : 'mr-6'}`}></i>
                         </div>
                     </span>
                 </>

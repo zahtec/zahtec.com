@@ -8,6 +8,7 @@ export type StoredTag = {
     name: string;
     fullName: string;
     fontaw?: string;
+    color: string[];
 };
 
 export type StoredProject = {
@@ -25,35 +26,47 @@ const tags = {
         name: 'python',
         fullName: 'Python',
         fontaw: 'python',
+        color: ['from-teal', 'to-teal-dark', 'border-teal'],
     },
     node: {
         name: 'node',
         fullName: 'Node.js',
         fontaw: 'node-js',
+        color: ['from-green', 'to-green-dark', 'border-green'],
     },
     nextjs: {
         name: 'nextjs',
         fullName: 'Next.js',
+        color: ['from-magenta', 'to-magenta-dark', 'border-magenta'],
     },
     react: {
         name: 'react',
         fullName: 'React',
         fontaw: 'react',
+        color: ['from-purple', 'to-purple-dark', 'border-purple'],
+    },
+    tailwind: {
+        name: 'tailwind',
+        fullName: 'Tailwind',
+        color: ['from-red', 'to-red-dark', 'border-red'],
     },
     html: {
         name: 'html',
         fullName: 'HTML',
         fontaw: 'html5',
+        color: ['from-orange', 'to-orange-dark', 'border-orange'],
     },
     css: {
         name: 'css',
         fullName: 'CSS',
         fontaw: 'css3',
+        color: ['from-blue', 'to-blue-dark', 'border-blue'],
     },
     js: {
         name: 'js',
         fullName: 'JS/TS',
         fontaw: 'js',
+        color: ['from-yellow', 'to-yellow-dark', 'border-yellow'],
     },
 };
 
@@ -62,7 +75,7 @@ export function getStaticProps() {
         props: {
             projects: [
                 {
-                    name: 'tellodji',
+                    name: 'bg-tellodji',
                     fullName: 'TelloDji',
                     desc: 'TelloDji is a Python library that wraps the DJI Tello SDK v1.3 and v2.0 for easy control of any Tello drone.',
                     tags: [tags.python, tags.html, tags.css, tags.js],
@@ -70,7 +83,7 @@ export function getStaticProps() {
                     link: 'https://github.com/zahtec/tellodji',
                 },
                 {
-                    name: 'browser',
+                    name: 'bg-browser',
                     fullName: 'Browser Upgrade',
                     desc: 'Browser upgrade is a simple Express.js middleware program that redirects users still using Internet Explorer to a page where they can choose from a variety of modern browsers.',
                     tags: [tags.node, tags.html, tags.css, tags.js],
@@ -78,14 +91,14 @@ export function getStaticProps() {
                     link: 'https://github.com/zahtec/browser-upgrade',
                 },
                 {
-                    name: 'portfolio',
+                    name: 'bg-portfolio',
                     fullName: 'This Portfolio',
                     desc: 'This portfolio shows off some of my best frontend skills, the animations and backend are superior and I hope you like it!',
-                    tags: [tags.node, tags.nextjs, tags.react, tags.html, tags.css, tags.js],
+                    tags: [tags.node, tags.nextjs, tags.react, tags.tailwind, tags.html, tags.css, tags.js],
                     imageAlt: 'Image of the homepage of this portfolio',
                 },
                 {
-                    name: 'trollpy',
+                    name: 'bg-trollpy',
                     fullName: 'Trollpy',
                     desc: 'Trollpy is a Python lbrary that contains a collection of functions that are meant to override built-in functions or ones on commonly used libraries. It is used to mess with developers sometimes, not in a malicious way.',
                     tags: [tags.python],
@@ -116,7 +129,7 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
     useEffect(() => {
         if (!filtering || !wrap.current) return;
         setSwitching(true);
-        if (filtering.length) router.push(`projects?f=${filtering.join('+')}`);
+        if (filtering.length) router.push(`projects?f=${filtering.join('+')}`, undefined, { shallow: true });
         else router.push('projects');
 
         setTimeout(() => {
@@ -160,24 +173,24 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
                 <meta name="twitter:title" content="Projects" />
                 <meta name="twitter:description" content="I'm Zahtec, an aspiring software engineer and looking for a job in the industry. These are my projects!" />
             </Head>
-            <main>
-                <div className="load-anim">
-                    <div id="filter" className="flex no-select">
-                        <i className="fa-solid fa-filter"></i>
+            <main className="pt-28 max-w-1200">
+                <div className="load-anim mb-12">
+                    <div className="flex select-none text-2xl items-center">
+                        <i className="fa-solid fa-filter mr-2"></i>
                         <p>Filter</p>
                     </div>
                     <TagRow tags={Object.values(tags)} clickHandler={clickHandler} filtering={filtering ? filtering : []} />
                 </div>
-                <div id="projects" ref={wrap} style={switching ? { opacity: 0, transform: 'translateY(2rem)' } : {}}>
+                <div className="transition-tropacity duration-200" ref={wrap} style={switching ? { opacity: 0, transform: 'translateY(2rem)' } : {}}>
                     {projects.map(project => {
                         return <Project {...project} key={project.name} />;
                     })}
-                    <div id="unknown" className="load-anim flex project">
-                        <div className="wrapper">
-                            <div className="flex-cent">
-                                <h1>???</h1>
+                    <div className="load-anim flex w-full rounded-xl justify-center flex-col mb-20 relative overflow-hidden leading-7 bg-unknown bg-no-repeat bg-center bg-cover">
+                        <div className="h-full w-full bg-project from-accent pt-60 px-4 pb-4 transition-padding duration-300 xl:hover:pt-64">
+                            <div className="flex items-center">
+                                <h1 className="text-3xl sm:text-4xl">???</h1>
                             </div>
-                            <p>I'm always working on new projects, currently I have one involving Next.js, React, Python, and NLP with a big market scope in mind. Check back to see once its done!</p>
+                            <p className="max-w-720 my-8">I'm always working on new projects, currently I have one involving Next.js, React, Python, and NLP with a big market scope in mind. Check back to see once its done!</p>
                         </div>
                     </div>
                 </div>

@@ -127,7 +127,7 @@
 
 @media (min-width: 400px) {
     main {
-        padding-top: 9rem;
+        padding-top: 8rem;
     }
 
     #status-wrapper > h1 {
@@ -140,6 +140,10 @@
 }
 
 @media (min-width: 600px) {
+    main {
+        padding-top: 4rem;
+    }
+
     #intro.play {
         top: -2rem;
     }

@@ -21,9 +21,9 @@ export default function Document() {
                 <meta name="twitter:creator" content="@zahtec" />
                 <meta name="twitter:image" content="images/favicon.png" />
 
-                <meta name="theme-color" content="rgb(10, 10, 10)" />
+                <meta name="theme-color" content="#000000" />
 
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" />
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link rel="preconnect" href="kit.fontawesome.com" />

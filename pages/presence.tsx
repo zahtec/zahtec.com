@@ -32,6 +32,7 @@ export default function Presence() {
 
     const [status, setStatus] = useState<{ online: boolean; status: string } | null>(null);
     const [time, setTime] = useState<number | null>(data ? data.progress : null);
+    const [socketClosed, setSocketClosed] = useState(false);
 
     useEffect(() => {
         if (!data) return;
@@ -48,6 +49,7 @@ export default function Presence() {
     useEffect(() => {
         const socket = new WebSocket('wss://api.lanyard.rest/socket');
 
+        let interval: NodeJS.Timer;
         socket.addEventListener('message', data => {
             const res: LanyardResponse = JSON.parse(data.data);
 
@@ -60,7 +62,7 @@ export default function Presence() {
                         },
                     }),
                 );
-                setInterval(() => {
+                interval = setInterval(() => {
                     socket.send(
                         JSON.stringify({
                             op: 3,
@@ -74,7 +76,12 @@ export default function Presence() {
                 });
             }
         });
-    }, []);
+
+        socket.onclose = () => {
+            setSocketClosed(socketClosed ? false : true);
+            clearInterval(interval);
+        };
+    }, [socketClosed]);
 
     return (
         <>
@@ -114,7 +121,7 @@ export default function Presence() {
                     <div className="flex">
                         <div id="art-wrapper">
                             <Image src={data ? data.image : '/images/empty.webp'} alt={data ? `${data.album} album cover` : 'No song'} width="640" height="640" loading="eager" />
-                            <Image src={data ? data.image : '/images/empty.webp'} style={data ? { clip: `rect(0, ${Math.floor(data.progress / data.duration / 100) * 6}rem, 6rem, 0)` } : {}} width="640" height="640" loading="eager" />
+                            <Image src={data ? data.image : '/images/empty.webp'} style={data ? { clip: `rect(0, ${(Math.floor((data.progress / data.duration) * 100) / 100) * 6}rem, 6rem, 0)` } : {}} width="640" height="640" loading="eager" />
                         </div>
                         <div id="album-wrapper" className={data ? undefined : 'flex-cent'}>
                             <h1>{data ? data.title : 'Nothing playing'}</h1>

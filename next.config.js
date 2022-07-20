@@ -1,7 +1,7 @@
-import withPreact from 'next-plugin-preact';
+const withPreact = require('next-plugin-preact');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withPreact({
+module.exports = withPreact({
     experimental: {
         esmExternals: false,
         images: {
@@ -9,11 +9,9 @@ const nextConfig = withPreact({
         },
     },
     compiler: {
-        removeConsole: true,
+        removeConsole: false,
     },
     images: { domains: ['i.scdn.co'] },
     poweredByHeader: false,
     swcMinify: true,
 });
-
-export default nextConfig;

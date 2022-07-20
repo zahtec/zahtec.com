@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes burger-hide {
+    100% {
+        transform: translateY(1vh);
+        opacity: 0;
+    }
+}
+
+@layer base {
+    * {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    *:focus {
+        @apply outline-none;
+    }
+
+    *:focus-visible {
+        @apply outline outline-2 outline-highlight;
+    }
+
+    :root {
+        font-size: clamp(13px, 13px + 0.4vw, 21px);
+        scrollbar-width: thin;
+        scrollbar-color: white transparent;
+    }
+
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-white;
+    }
+
+    ::selection {
+        @apply bg-highlight;
+    }
+
+    body {
+        @apply bg-black scroll-smooth h-screen overflow-hidden font-main font-bold min-h-screen text-white;
+    }
+
+    main {
+        @apply pointer-events-none w-full pt-28 px-8 pb-4 text-xl max-w-720 m-auto md:pr-8 md:pl-28 leading-6;
+    }
+
+    a {
+        @apply text-inherit no-underline;
+    }
+
+    img {
+        user-drag: none;
+        -webkit-user-drag: none;
+        @apply select-none;
+    }
+
+    .load-anim {
+        @apply opacity-0 translate-y-load animate-load;
+    }
+
+    .no-scroll,
+    .no-scroll::-webkit-scrollbar {
+        scrollbar-width: none;
+        display: none;
+    }
+
+    #burger > div:first-child.open {
+        @apply translate-y-burger -rotate-45;
+    }
+
+    #burger > div:last-child.open {
+        @apply -translate-y-burger rotate-45;
+    }
+
+    @media (min-width: 600px) {
+        #overlay.play {
+            @apply ml-20;
+        }
+
+        #intro.play {
+            @apply -top-4 w-intro-scaled;
+        }
+
+        main {
+            @apply pr-8 pl-28 py-0;
+        }
+
+        #nav-bottom.show {
+            @apply hidden;
+        }
+
+        @media (max-height: 600px) {
+            nav {
+                scrollbar-width: none;
+            }
+
+            nav::-webkit-scrollbar {
+                @apply hidden;
+            }
+        }
+
+        @media (max-height: 850px) {
+            #intro.play {
+                @apply m-0 opacity-0;
+            }
+        }
+    }
+
+    @media (min-width: 700px) {
+        :root {
+            font-size: clamp(13px, 13px + 0.2vw, 21px);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::after {
+            transition: none !important;
+            animation-duration: 0s !important;
+        }
+    }
+}
+
+#intro.play {
+    @apply top-0;
+}
+
+.nav-bottom.open {
+    @apply top-0;
+}
