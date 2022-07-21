@@ -18,7 +18,7 @@ export default function Document() {
 
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:creator" content="@zahtec" />
-                <meta name="twitter:image" content="/images/favicon.png" />
+                <meta name="twitter:image" content="https://www.zahtec.com/images/favicon.png" />
 
                 <meta name="theme-color" content="#000000" />
 
