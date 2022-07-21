@@ -23,7 +23,7 @@ export default function Document() {
 
                 <meta name="theme-color" content="#000000" />
 
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link rel="preconnect" href="kit.fontawesome.com" />

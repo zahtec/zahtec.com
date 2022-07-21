@@ -64,7 +64,7 @@ module.exports = {
                 intro: '3/1',
             },
             fontFamily: {
-                main: ['system-ui', 'Roboto', 'helvetica', 'arial', 'sans-serif'],
+                main: ['Roboto', 'helvetica', 'arial', 'sans-serif'],
             },
             fontSize: {
                 '2.7xl': '1.7rem',
