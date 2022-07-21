@@ -194,9 +194,14 @@ export default function intro() {
         render.render(scene, cam);
     };
 
+    window.addEventListener('orientationchange', () => {});
+
     window.addEventListener('resize', () => {
-        ele.style.height = `${ele.clientWidth / 3}px`;
-        cam.aspect = ele.clientWidth / ele.clientHeight;
+        console.log('resize');
+        const w = window.innerWidth <= 500 ? window.innerWidth : 500;
+        const h = w / 3;
+        ele.style.height = `${h}px`;
+        cam.aspect = w / h;
         cam.updateProjectionMatrix();
     });
 
