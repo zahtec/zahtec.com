@@ -104,7 +104,7 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
 
             <Component {...pageProps} />
 
-            <section className={`nav-bottom flex fixed flex-col items-center justify-center top-full text-4xl h-full w-full transition-top duration-400 bg-accent md:hidden${isMenuOpen ? ' open' : ''}`}>
+            <section className={`nav-bottom flex fixed flex-col items-center justify-center top-full text-4xl h-full w-full transition-top duration-400 bg-accent md:hidden${isMenuOpen ? ' top-0' : ''}`}>
                 <Link href="/">
                     <a className={`flex justify-center items-center transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isRoot ? ' text-purple hover:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-solid fa-house mr-2"></i>
