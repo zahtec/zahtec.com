@@ -9,7 +9,7 @@ module.exports = {
             xl: '800px',
 
             sh: { raw: '(min-width: 600px) and (max-height: 600px)' },
-            mh: { raw: '(min-height: 600px) and (max-height: 850px)' },
+            mh: { raw: '(min-width: 600px) and (max-height: 850px)' },
         },
         extend: {
             colors: {

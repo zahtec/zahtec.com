@@ -7,10 +7,10 @@
 -   Node.js
 -   Next.js
 -   React
+-   Tailwind
 
 ## 🔧 Upcoming Changes
 
--   Switch to [tailwind](https://tailwindcss.com/)
 -   Finish boids.zahtec.com which is a Rust [PWA](https://web.dev/progressive-web-apps/) with an optimized 3D boids simulation
 
 ## ✅ Suggestions?
