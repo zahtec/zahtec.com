@@ -54,7 +54,7 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
             </Head>
 
             <div id="overlay" className="flex justify-center transition-margin-left duration-800 will-change-margin">
-                <canvas id="intro" className="w-full absolute aspect-intro max-w-500 h-min transition-intro duration-800 top-intro md:top-intro-scaled"></canvas>
+                <canvas id="intro" className="w-full absolute max-w-500 h-min transition-intro duration-800 top-intro md:top-intro-scaled"></canvas>
             </div>
 
             <nav className="load-anim flex-col justify-between fixed scroll h-screen w-20 pt-6 pb-16 -translate-x-20 bg-accent pointer-events-none hidden md:flex sh:overflow-auto">

@@ -15,6 +15,7 @@ export default function intro() {
     const render = new WebGLRenderer({ canvas: ele, antialias: true, alpha: true });
     render.autoClear = false;
     render.setPixelRatio(15);
+    ele.style.height = `${ele.clientWidth / 3}px`;
 
     const light = new DirectionalLight(0xffffff, 3);
     light.position.set(0, 10, 2);
@@ -192,6 +193,12 @@ export default function intro() {
         update(t);
         render.render(scene, cam);
     };
+
+    window.addEventListener('resize', () => {
+        ele.style.height = `${ele.clientWidth / 3}px`;
+        cam.aspect = ele.clientWidth / ele.clientHeight;
+        cam.updateProjectionMatrix();
+    });
 
     requestAnimationFrame(animate);
 }
