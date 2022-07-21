@@ -112,7 +112,7 @@ export function getStaticProps(): { props: { projects: StoredProject[] } } {
 }
 
 export default function Projects({ projects }: { projects: StoredProject[] }) {
-    const LANGS = ['python', 'node', 'nextjs', 'react', 'tailwind', 'html', 'css', 'js'];
+    const LANGS = Object.keys(tags);
     const [switching, setSwitching] = useState(false);
     const [filtering, setFiltering] = useState<string[] | null>(null);
     const wrap = useRef<HTMLDivElement>(null);

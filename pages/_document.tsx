@@ -15,7 +15,6 @@ export default function Document() {
                 <meta name="og:image:width" content="200" />
                 <meta name="og:image:height" content="200" />
                 <meta name="og:image:alt" content="Zahtec logo" />
-                <meta name="og:image:type" content="/image/png" />
 
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:creator" content="@zahtec" />
