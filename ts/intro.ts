@@ -14,7 +14,7 @@ export default function intro() {
 
     const render = new WebGLRenderer({ canvas: ele, antialias: true, alpha: true });
     render.autoClear = false;
-    render.setPixelRatio(window.innerWidth / window.innerHeight);
+    render.setPixelRatio(window.devicePixelRatio * 2);
     ele.style.height = `${ele.clientWidth / 3}px`;
 
     const light = new DirectionalLight(0xffffff, 3);
