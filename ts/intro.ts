@@ -22,7 +22,7 @@ export default function intro() {
     scene.add(light);
     scene.add(new AmbientLight(0xffffff, 0.7));
 
-    new FontLoader().load('./font.json', font => {
+    new FontLoader().load('/font.json', font => {
         const text = new Group();
         const letters = ['Z', 'A', 'H', 'T', 'E', 'C'];
 
@@ -40,7 +40,7 @@ export default function intro() {
 
         scene.add(text);
 
-        new OBJLoader().load('./icon.obj', obj => {
+        new OBJLoader().load('/icon.obj', obj => {
             obj.rotateX(Math.PI / 2);
             obj.position.z = -2;
             obj.castShadow = true;

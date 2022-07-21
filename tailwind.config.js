@@ -9,7 +9,6 @@ module.exports = {
             xl: '800px',
 
             sh: { raw: '(min-width: 600px) and (max-height: 600px)' },
-            mh: { raw: '(min-width: 600px) and (max-height 850px)' }, // TODO: axe
         },
         extend: {
             colors: {
@@ -57,6 +56,8 @@ module.exports = {
             },
             spacing: {
                 icon: '0.5rem',
+                album: '2.4rem',
+                toryn: '7.6rem',
             },
             aspectRatio: {
                 intro: '3/1',
@@ -65,7 +66,10 @@ module.exports = {
                 main: ['system-ui', 'Roboto', 'helvetica', 'arial', 'sans-serif'],
             },
             fontSize: {
+                '2.7xl': '1.7rem',
                 '4xl': '2rem',
+                '4.5xl': '2.5rem',
+                '11xl': '12rem',
             },
             transitionDuration: {
                 400: '400ms',
@@ -76,10 +80,12 @@ module.exports = {
                 intro: 'top, width, opacity',
                 top: 'top',
                 filter: 'filter',
+                width: 'width',
                 tropacity: 'opacity, transform',
                 padding: 'padding',
                 overlay: 'color, opacity, transform',
                 tag: 'filter, opacity, margin',
+                filform: 'filter, transform',
             },
             dropShadow: {
                 nav: '0 0 0.5rem rgba(255, 255, 255, 0.7)',
@@ -87,9 +93,13 @@ module.exports = {
                 burger: '0 0 0.4rem black',
                 gr: '0 0 0.5rem var(--tw-gradient-from)',
                 'gr-hover': '0 0 1.5rem var(--tw-gradient-from)',
+                tag: '0 0 0.7rem var(--tw-gradient-from)',
+                'skill-button': '0 0.5rem 1rem rgba(0, 0, 0, 0.7)',
+                'skill-button-hover': '0 0.8rem 1.3rem rgba(0, 0, 0, 0.9)',
             },
             willChange: {
                 margin: 'margin',
+                filter: 'filter',
             },
             maxWidth: {
                 500: '500px',
@@ -103,6 +113,7 @@ module.exports = {
                 90: '90%',
                 intro: 'calc(50vh - (100vw / 3) / 2)',
                 'intro-scaled': 'calc(50vh - 166.66px / 2)',
+                80: '80%',
             },
             width: {
                 'intro-scaled': 'calc(100% - 5rem);',
@@ -130,6 +141,7 @@ module.exports = {
                 'gradient-140': 'linear-gradient(140deg, var(--tw-gradient-from), var(--tw-gradient-to))',
                 project: 'linear-gradient(0deg, var(--tw-gradient-from) 50%, transparent)',
                 overlay: 'linear-gradient(90deg, var(--tw-gradient-from) 4.5%, transparent 20%, transparent 80%, var(--tw-gradient-from) 94.5%);',
+                'overlay-lg': 'linear-gradient(90deg, var(--tw-gradient-from) 3%, transparent 10%, transparent 90%, var(--tw-gradient-from) 97%);',
                 unknown: 'url(/images/unknown.webp)',
                 tellodji: 'url(/images/tellodji.webp)',
                 detoxifai: 'url(/images/detoxifai.webp)',
@@ -139,6 +151,9 @@ module.exports = {
             },
             borderWidth: {
                 xs: '0.1rem',
+            },
+            zIndex: {
+                '-1': '-1',
             },
         },
     },

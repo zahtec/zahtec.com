@@ -21,7 +21,7 @@ export type StoredProject = {
     overlay?: boolean;
 };
 
-const tags = {
+const tags: { [key: string]: StoredTag } = {
     python: {
         name: 'python',
         fullName: 'Python',
@@ -70,7 +70,7 @@ const tags = {
     },
 };
 
-export function getStaticProps() {
+export function getStaticProps(): { props: { projects: StoredProject[] } } {
     return {
         props: {
             projects: [
@@ -106,7 +106,7 @@ export function getStaticProps() {
                     link: 'https://github.com/zahtec/trollpy',
                     overlay: false,
                 },
-            ] as StoredProject[],
+            ],
         },
     };
 }
@@ -133,7 +133,7 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
         else router.push('projects');
 
         setTimeout(() => {
-            Array.from(wrap.current!.children).forEach(project => {
+            Array.from(wrap.current!.children).forEach((project: HTMLElement) => {
                 let tags: string | string[] | null = project.getAttribute('z-tags');
                 if (!tags) return;
                 tags = tags.split(',');
@@ -143,8 +143,8 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
                     if (!tags!.includes(tag)) hide = true;
                 });
 
-                if (hide) project.classList.add('hide');
-                else project.classList.remove('hide');
+                if (hide) project.style.display = 'none';
+                else project.style.display = '';
             });
 
             setSwitching(false);
@@ -173,7 +173,7 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
                 <meta name="twitter:title" content="Projects" />
                 <meta name="twitter:description" content="I'm Zahtec, an aspiring software engineer and looking for a job in the industry. These are my projects!" />
             </Head>
-            <main className="pt-28 max-w-1200">
+            <main className="pt-28 max-w-1200 my-0 mx-auto">
                 <div className="load-anim mb-12">
                     <div className="flex select-none text-2xl items-center">
                         <i className="fa-solid fa-filter mr-2"></i>

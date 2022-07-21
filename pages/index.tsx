@@ -1,6 +1,6 @@
 import { Tween, Easing } from '@tweenjs/tween.js';
 import Underline from '../components/Underline';
-import { useEffect, MouseEvent } from 'react';
+import { useEffect, MouseEvent, FocusEvent } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -18,7 +18,7 @@ export default function Home({ age }: { age: number }) {
     const skilMove = { perc: -1, perc2: 0 };
     const abouMove = { perc: -1, perc2: 0 };
 
-    const linkHover = (e: MouseEvent, move: { perc: number; perc2: number }) => {
+    const linkHover = (e: MouseEvent | FocusEvent, move: { perc: number; perc2: number }) => {
         new Tween(move)
             .to({ perc: 50, perc2: 100 }, 800)
             .easing(Easing.Exponential.InOut)
@@ -28,7 +28,7 @@ export default function Home({ age }: { age: number }) {
             .start();
     };
 
-    const linkLeave = (e: MouseEvent, move: { perc: number; perc2: number }) => {
+    const linkLeave = (e: MouseEvent | FocusEvent, move: { perc: number; perc2: number }) => {
         new Tween(move)
             .to({ perc: -1, perc2: 0 }, 800)
             .easing(Easing.Exponential.InOut)
@@ -87,25 +87,25 @@ export default function Home({ age }: { age: number }) {
                 </p>
                 <div className="flex flex-col items-center my-8 gap-4 w-full">
                     <Link href="/projects">
-                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-accentwo to-accent border-xs border-accentwo drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, projMove)} onMouseLeave={e => linkLeave(e, projMove)}>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-accentwo to-accent border-xs border-accentwo drop-shadow-gr hover:drop-shadow-gr-hover focus-visible:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, projMove)} onMouseLeave={e => linkLeave(e, projMove)} onFocus={e => linkHover(e, projMove)} onBlur={e => linkLeave(e, projMove)}>
                             <i className="fa-solid fa-cube mr-2"></i>
                             <p>All Projects</p>
                         </a>
                     </Link>
                     <Link href="/presence">
-                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-green to-green-dark border-xs border-green drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, presMove)} onMouseLeave={e => linkLeave(e, presMove)}>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-green to-green-dark border-xs border-green drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, presMove)} onMouseLeave={e => linkLeave(e, presMove)} onFocus={e => linkHover(e, presMove)} onBlur={e => linkLeave(e, presMove)}>
                             <i className="fa-solid fa-bolt mr-2"></i>
                             <p>Presence</p>
                         </a>
                     </Link>
                     <Link href="/skills">
-                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-magenta to-magenta-dark border-xs border-magenta drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, skilMove)} onMouseLeave={e => linkLeave(e, skilMove)}>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-magenta to-magenta-dark border-xs border-magenta drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, skilMove)} onMouseLeave={e => linkLeave(e, skilMove)} onFocus={e => linkHover(e, skilMove)} onBlur={e => linkLeave(e, skilMove)}>
                             <i className="fa-solid fa-wrench mr-2"></i>
                             <p>Skills</p>
                         </a>
                     </Link>
                     <Link href="/about">
-                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-orange to-orange-dark border-xs border-orange drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, abouMove)} onMouseLeave={e => linkLeave(e, abouMove)}>
+                        <a className="load-anim flex justify-center items-center p-2 rounded text-xl w-full h-16 pointer-events-none select-none transition-filter duration-1000 bg-gradient-140 from-orange to-orange-dark border-xs border-orange drop-shadow-gr hover:drop-shadow-gr-hover" onMouseEnter={e => linkHover(e, abouMove)} onMouseLeave={e => linkLeave(e, abouMove)} onFocus={e => linkHover(e, abouMove)} onBlur={e => linkLeave(e, abouMove)}>
                             <i className="fa-solid fa-circle-info mr-2"></i>
                             <p>About</p>
                         </a>

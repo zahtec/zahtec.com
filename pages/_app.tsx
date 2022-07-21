@@ -112,40 +112,40 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
                     </a>
                 </Link>
                 <Link href="/projects">
-                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isProjects ? ' text-purple hover:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isProjects ? ' text-purple hover:drop-shadow-this focus-visible:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-solid fa-cube mr-2"></i>
                         <p>Projects</p>
                     </a>
                 </Link>
                 <Link href="/presence">
-                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isPresence ? ' text-purple hover:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isPresence ? ' text-purple hover:drop-shadow-this focus-visible:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-solid fa-bolt mr-2"></i>
                         <p>Presence</p>
                     </a>
                 </Link>
                 <Link href="/skills">
-                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isSkills ? ' text-purple hover:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isSkills ? ' text-purple hover:drop-shadow-this focus-visible:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-solid fa-wrench mr-2"></i>
                         <p>Skills</p>
                     </a>
                 </Link>
                 <Link href="/about">
-                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isAbout ? ' text-purple hover:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className={`flex justify-center items-center mt-8 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isAbout ? ' text-purple hover:drop-shadow-this focus-visible:drop-shadow-this' : ''}`} tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-solid fa-circle-info mr-2"></i>
                         <p>About</p>
                     </a>
                 </Link>
                 <div className="load-anim flex justify-center items-center mt-16 gap-4 text-4xl w-full pointer-events-none">
-                    <a className="transition-colors duration-300 hover:text-hover" target="_blank" href="https://www.github.com/zahtec" aria-label="github" tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.github.com/zahtec" aria-label="github" tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-brands fa-github"></i>
                     </a>
-                    <a className="transition-colors duration-300 hover:text-hover" target="_blank" href="https://www.twitter.com/Zahtec" aria-label="twitter" tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.twitter.com/Zahtec" aria-label="twitter" tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-brands fa-twitter"></i>
                     </a>
-                    <a className="transition-colors duration-300 hover:text-hover" target="_blank" href="mailto:32808999+zahtec@users.noreply.github.com" aria-label="email" tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="mailto:32808999+zahtec@users.noreply.github.com" aria-label="email" tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-solid fa-envelope"></i>
                     </a>
-                    <a className="transition-colors duration-300 hover:text-hover" target="_blank" href="https://www.discord.com/users/340324858405847042" aria-label="discord" tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.discord.com/users/340324858405847042" aria-label="discord" tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-brands fa-discord"></i>
                     </a>
                 </div>
