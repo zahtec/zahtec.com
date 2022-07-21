@@ -47,7 +47,7 @@
     }
 
     main {
-        @apply pointer-events-none w-full pt-28 px-8 pb-4 text-xl max-w-720 m-auto md:pr-8 md:pl-28 leading-6;
+        @apply pointer-events-none w-full py-28 px-8 pb-4 text-xl max-w-720 m-auto md:pr-8 md:pl-28 leading-6;
     }
 
     a {
@@ -96,7 +96,7 @@
 
     @media (min-width: 600px) {
         main {
-            @apply pt-20 pr-8 pl-28 py-0;
+            @apply pt-20 pr-8 pl-28 py-6;
         }
 
         @media (max-height: 600px) {

@@ -57,8 +57,8 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
                 <canvas id="intro" className="w-full absolute max-w-500 h-min transition-intro duration-800 top-intro md:top-intro-scaled"></canvas>
             </div>
 
-            <nav className="load-anim flex-col justify-between fixed scroll h-screen w-20 pt-6 pb-16 -translate-x-20 bg-accent pointer-events-none hidden md:flex sh:overflow-auto">
-                <Image src="/images/icon.webp" alt="Zahtec logo" width="300" height="300" priority={true} className="opacity-0 transition-opacity duration-800 w-20 h-20" />
+            <nav className="load-anim flex-col justify-between fixed no-scroll h-screen w-20 pt-6 pb-16 -translate-x-20 bg-accent pointer-events-none hidden md:flex sh:overflow-y-auto">
+                <Image src="/images/icon.webp" alt="Zahtec logo" width="300" height="300" priority={true} className="opacity-0 transition-opacity duration-800 w-full h-20" />
                 <div className="flex flex-col justify-center items-center">
                     <Link href="/">
                         <a className={`mt-6 text-4xl transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav ${isRoot ? ' text-purple hover:drop-shadow-this focus-visible:drop-shadow-this' : ''}`} tabIndex={0} aria-label="home">
@@ -87,16 +87,16 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
                     </Link>
                 </div>
                 <div className="mt-6 text-2xl flex flex-col items-center">
-                    <a className="transition-colors duration-300 mt-3 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.github.com/zahtec" aria-label="github">
+                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="https://www.github.com/zahtec" aria-label="github">
                         <i className="fa-brands fa-github"></i>
                     </a>
-                    <a className="transition-colors duration-300 mt-3 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.twitter.com/Zahtec" aria-label="twitter">
+                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="https://www.twitter.com/Zahtec" aria-label="twitter">
                         <i className="fa-brands fa-twitter"></i>
                     </a>
-                    <a className="transition-colors duration-300 mt-3 hover:text-hover focus-visible:text-hover" target="_blank" href="mailto:32808999+zahtec@users.noreply.github.com" aria-label="email">
+                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="mailto:32808999+zahtec@users.noreply.github.com" aria-label="email">
                         <i className="fa-solid fa-envelope"></i>
                     </a>
-                    <a className="transition-colors duration-300 mt-3 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.discord.com/users/340324858405847042" aria-label="discord">
+                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="https://www.discord.com/users/340324858405847042" aria-label="discord">
                         <i className="fa-brands fa-discord"></i>
                     </a>
                 </div>

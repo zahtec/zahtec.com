@@ -186,7 +186,7 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
                         return <Project {...project} key={project.name} />;
                     })}
                     <div className="load-anim flex w-full rounded-xl justify-center flex-col mb-20 relative overflow-hidden leading-7 bg-unknown bg-no-repeat bg-center bg-cover">
-                        <div className="h-full w-full bg-project from-accent pt-60 px-4 pb-4 transition-padding duration-300 xl:hover:pt-64">
+                        <div className="h-full w-full bg-project from-accent pt-60 px-4 pb-4 dding">
                             <div className="flex items-center">
                                 <h1 className="text-3xl sm:text-4xl">???</h1>
                             </div>

@@ -8,7 +8,7 @@ module.exports = {
             lg: '700px',
             xl: '800px',
 
-            sh: { raw: '(min-width: 600px) and (max-height: 600px)' },
+            sh: { raw: '(min-width: 600px) and (max-height: 645px)' },
             mh: { raw: '(min-width: 600px) and (max-height: 850px)' },
         },
         extend: {
@@ -58,7 +58,7 @@ module.exports = {
             spacing: {
                 icon: '0.5rem',
                 album: '2.4rem',
-                toryn: '7.6rem',
+                toryn: '7rem',
             },
             aspectRatio: {
                 intro: '3/1',
@@ -83,7 +83,6 @@ module.exports = {
                 filter: 'filter',
                 width: 'width',
                 tropacity: 'opacity, transform',
-                padding: 'padding',
                 overlay: 'color, opacity, transform',
                 tag: 'filter, opacity, margin',
                 filform: 'filter, transform',
@@ -94,6 +93,7 @@ module.exports = {
                 burger: '0 0 0.4rem black',
                 gr: '0 0 0.5rem var(--tw-gradient-from)',
                 'gr-hover': '0 0 1.5rem var(--tw-gradient-from)',
+                skill: '0 0 1rem var(--tw-gradient-from)',
                 tag: '0 0 0.7rem var(--tw-gradient-from)',
                 'skill-button': '0 0.5rem 1rem rgba(0, 0, 0, 0.7)',
                 'skill-button-hover': '0 0.8rem 1.3rem rgba(0, 0, 0, 0.9)',
