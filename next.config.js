@@ -9,7 +9,7 @@ module.exports = withPreact({
         },
     },
     compiler: {
-        removeConsole: false,
+        removeConsole: true,
     },
     images: { domains: ['i.scdn.co'] },
     poweredByHeader: false,
