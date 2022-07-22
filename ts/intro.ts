@@ -103,7 +103,7 @@ export default function intro() {
 
                             // Wait for text to reach top of page
                             setTimeout(() => {
-                                document.body.style.overflowY = 'overlay';
+                                navigator.userAgent.indexOf('Firefox') > -1 ? (document.body.style.overflowY = 'auto') : (document.body.style.overflowY = 'overlay');
 
                                 let ind = 0;
                                 document.querySelectorAll('.load-anim').forEach((el: HTMLElement) => {
