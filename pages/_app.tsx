@@ -93,7 +93,7 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
                     <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="https://www.twitter.com/Zahtec" aria-label="twitter">
                         <i className="fa-brands fa-twitter"></i>
                     </a>
-                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="mailto:32808999+zahtec@users.noreply.github.com" aria-label="email">
+                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="mailto:top10webgo@gmail.com" aria-label="email">
                         <i className="fa-solid fa-envelope"></i>
                     </a>
                     <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="https://www.discord.com/users/340324858405847042" aria-label="discord">

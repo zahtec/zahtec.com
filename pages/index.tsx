@@ -1,6 +1,6 @@
 import { Tween, Easing } from '@tweenjs/tween.js';
 import Underline from '../components/Underline';
-import { useEffect, MouseEvent, FocusEvent } from 'react';
+import { useEffect, MouseEvent, FocusEvent, useRef, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -17,6 +17,9 @@ export default function Home({ age }: { age: number }) {
     const presMove = { perc: -1, perc2: 0 };
     const skilMove = { perc: -1, perc2: 0 };
     const abouMove = { perc: -1, perc2: 0 };
+
+    const [currentWelcome, setCurrentWelcome] = useState('Hi!');
+    const welcome = useRef<HTMLHeadingElement>(null);
 
     const linkHover = (e: MouseEvent | FocusEvent, move: { perc: number; perc2: number }) => {
         new Tween(move)
@@ -38,28 +41,30 @@ export default function Home({ age }: { age: number }) {
             .start();
     };
 
+    const msgs = ['Hi!', 'Hello!', 'Hey!', 'Howdy!'];
+
     useEffect(() => {
-        const title = document.getElementById('welcome')!;
-        const msgs = ['Hi!', 'Hello!', 'Hey!', 'Howdy!'];
-
-        const textAnim = () => {
+        setTimeout(() => {
+            if (!welcome.current) return;
+            welcome.current.style.opacity = '0';
             setTimeout(() => {
-                title.style.opacity = '0';
-                setTimeout(() => {
-                    const ind = msgs.indexOf(title.innerText);
-                    title.innerText = msgs[ind === 3 ? 0 : ind + 1];
-                    title.style.opacity = '1';
-                    textAnim();
-                }, 300);
-            }, Math.trunc(Math.random() * 10000) + 3000);
-        };
+                if (!welcome.current) return;
+                const ind = msgs.indexOf(currentWelcome);
+                setCurrentWelcome(msgs[ind === 3 ? 0 : ind + 1]);
+                welcome.current.style.opacity = '1';
+            }, 300);
+        }, Math.trunc(Math.random() * 10000) + 3000);
+    }, [currentWelcome]);
 
-        title.addEventListener(
+    useEffect(() => {
+        if (!welcome.current) return;
+        welcome.current.addEventListener(
             'animationend',
             () => {
-                title.classList.remove('load-anim');
-                title.style.opacity = '1';
-                textAnim();
+                if (!welcome.current) return;
+                welcome.current.classList.remove('load-anim');
+                welcome.current.style.opacity = '1';
+                setCurrentWelcome('Hi!');
             },
             { once: true },
         );
@@ -78,8 +83,8 @@ export default function Home({ age }: { age: number }) {
                 <meta name="twitter:description" content="I'm Zahtec, an aspiring software engineer and looking for a job in the industry. Welcome to my portfolio!" />
             </Head>
             <main>
-                <h1 className="load-anim transition-opacity duration-300 text-4xl font-extrabold text-center mb-4" id="welcome">
-                    Hi!
+                <h1 className="load-anim transition-opacity duration-300 text-4xl font-extrabold text-center mb-4" ref={welcome}>
+                    {currentWelcome}
                 </h1>
                 <h1 className="load-anim text-5xl mb-4 font-extrabold text-center">I'm Zahtec</h1>
                 <p className="load-anim">
