@@ -93,7 +93,7 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
                     <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="https://www.twitter.com/Zahtec" aria-label="twitter">
                         <i className="fa-brands fa-twitter"></i>
                     </a>
-                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="mailto:top10webgo@gmail.com" aria-label="email">
+                    <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="mailto:contact@zahtec.com" aria-label="email">
                         <i className="fa-solid fa-envelope"></i>
                     </a>
                     <a className="mt-3 transition-filter duration-300 hover:drop-shadow-nav focus-visible:drop-shadow-nav" target="_blank" href="https://www.discord.com/users/340324858405847042" aria-label="discord">
@@ -142,7 +142,7 @@ export default function Portfolio({ Component, pageProps }: AppProps) {
                     <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.twitter.com/Zahtec" aria-label="twitter" tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-brands fa-twitter"></i>
                     </a>
-                    <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="mailto:top10webgo@gmail.com" aria-label="email" tabIndex={isMenuOpen ? 0 : -1}>
+                    <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="mailto:contact@zahtec.com" aria-label="email" tabIndex={isMenuOpen ? 0 : -1}>
                         <i className="fa-solid fa-envelope"></i>
                     </a>
                     <a className="transition-colors duration-300 hover:text-hover focus-visible:text-hover" target="_blank" href="https://www.discord.com/users/340324858405847042" aria-label="discord" tabIndex={isMenuOpen ? 0 : -1}>
