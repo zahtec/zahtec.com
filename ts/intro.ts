@@ -1,7 +1,7 @@
 import { Scene, PerspectiveCamera, WebGLRenderer, MeshLambertMaterial, Mesh, DirectionalLight, AmbientLight, Group, Material } from 'three';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Tween, update, Easing } from '@tweenjs/tween.js';
 
 export default function intro() {
@@ -41,7 +41,9 @@ export default function intro() {
 
         scene.add(text);
 
-        new OBJLoader().load('/icon.obj', obj => {
+        new GLTFLoader().load('/icon.gltf', gltf => {
+            const obj = gltf.scene;
+
             obj.rotateX(Math.PI / 2);
             obj.position.z = -2;
             obj.castShadow = true;
