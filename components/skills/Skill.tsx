@@ -8,7 +8,7 @@ export default function Skill({ fullName, name, desc, fontaw, color, fontawPrefi
     const [isHovering, setIsHovering] = useState(false);
 
     return (
-        <div className={`load-anim flex w-full items-center rounded-xl justify-center flex-col mb-8 py-8 px-4 relative text-center transition-filter duration-300 overflow-hidden drop-shadow-gr bg-gradient-140 border-solid border-xs ${color[0]} ${color[1]} ${color[2]} hover:drop-shadow-skill`}>
+        <div className={`load-anim flex w-full min-h-[20rem] items-center rounded-xl justify-center flex-col mb-8 py-8 px-4 relative text-center transition-filter duration-300 overflow-hidden drop-shadow-gr bg-gradient-140 border-solid border-xs ${color[0]} ${color[1]} ${color[2]} hover:drop-shadow-skill`}>
             <h1 className="text-4.5xl">{fullName}</h1>
             <p className="my-5 text-xl leading-6">{desc}</p>
             {hasProjects && (

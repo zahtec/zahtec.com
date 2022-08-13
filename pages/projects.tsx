@@ -26,48 +26,54 @@ const tags: { [key: string]: StoredTag } = {
         name: 'python',
         fullName: 'Python',
         fontaw: 'python',
-        color: ['from-teal', 'to-teal-dark', 'border-teal'],
+        color: ['from-teal', 'to-teal-dark', 'border-teal']
     },
     node: {
         name: 'node',
         fullName: 'Node.js',
         fontaw: 'node-js',
-        color: ['from-green', 'to-green-dark', 'border-green'],
+        color: ['from-green', 'to-green-dark', 'border-green']
+    },
+    docker: {
+        name: 'docker',
+        fullName: 'Docker',
+        fontaw: 'docker',
+        color: ['from-blue', 'to-blue-dark', 'border-blue']
     },
     nextjs: {
         name: 'nextjs',
         fullName: 'Next.js',
-        color: ['from-magenta', 'to-magenta-dark', 'border-magenta'],
+        color: ['from-magenta', 'to-magenta-dark', 'border-magenta']
     },
     react: {
         name: 'react',
         fullName: 'React',
         fontaw: 'react',
-        color: ['from-purple', 'to-purple-dark', 'border-purple'],
+        color: ['from-purple', 'to-purple-dark', 'border-purple']
     },
     tailwind: {
         name: 'tailwind',
         fullName: 'Tailwind',
-        color: ['from-red', 'to-red-dark', 'border-red'],
+        color: ['from-red', 'to-red-dark', 'border-red']
     },
     html: {
         name: 'html',
         fullName: 'HTML',
         fontaw: 'html5',
-        color: ['from-orange', 'to-orange-dark', 'border-orange'],
+        color: ['from-orange', 'to-orange-dark', 'border-orange']
     },
     css: {
         name: 'css',
         fullName: 'CSS',
         fontaw: 'css3',
-        color: ['from-blue', 'to-blue-dark', 'border-blue'],
+        color: ['from-blue', 'to-blue-dark', 'border-blue']
     },
     js: {
         name: 'js',
         fullName: 'JS/TS',
         fontaw: 'js',
-        color: ['from-yellow', 'to-yellow-dark', 'border-yellow'],
-    },
+        color: ['from-yellow', 'to-yellow-dark', 'border-yellow']
+    }
 };
 
 export function getStaticProps(): { props: { projects: StoredProject[] } } {
@@ -75,39 +81,55 @@ export function getStaticProps(): { props: { projects: StoredProject[] } } {
         props: {
             projects: [
                 {
-                    name: 'bg-tellodji',
-                    fullName: 'TelloDji',
-                    desc: 'TelloDji is a Python library that wraps the DJI Tello SDK v1.3 and v2.0 for easy control of any Tello drone.',
-                    tags: [tags.python, tags.html, tags.css, tags.js],
-                    imageAlt: 'Image of a drone flying',
-                    link: 'https://github.com/zahtec/tellodji',
+                    name: 'bg-[url(/images/pindrop.webp)]',
+                    fullName: 'PinDrop',
+                    desc: 'PinDrop allows you to securely share files with either devices on your network, or people on the internet. It has no size limit and is completely free to use. It utilizes webRTC and WebSockets for connection, redis for volatile storage, Express for the webserver, Caddy for a proxy, and can be self-hosted with Docker.',
+                    tags: [tags.node, tags.docker, tags.tailwind, tags.html, tags.css, tags.js],
+                    imageAlt: 'Image of the PinDrop website',
+                    link: 'https://github.com/zahtec/pindrop'
                 },
                 {
-                    name: 'bg-browser',
+                    name: 'bg-[url(/images/tellodji.webp)]',
+                    fullName: 'TelloDji',
+                    desc: 'TelloDji is a Python library that wraps the DJI Tello SDK v1.3 and v2.0 for easy control of any Tello drone. Multithreading is built-in making it faster than alternative libraries.',
+                    tags: [tags.python, tags.html, tags.css, tags.js],
+                    imageAlt: 'Image of a drone flying',
+                    link: 'https://github.com/zahtec/tellodji'
+                },
+                {
+                    name: 'bg-[url(/images/detoxifai.webp)]',
+                    fullName: 'DetoxifAi',
+                    desc: 'DetoxifAi is a trained YoloV5 model that recognizes poisounous species of mushrooms and snakes in the wild in an easy to use and intiutive user interface. Protecting most commonly hikers and others.',
+                    tags: [tags.python, tags.html, tags.css, tags.js],
+                    imageAlt: 'Image of a snake',
+                    link: 'https://github.com/zahtec/SC22-BatchB-Flaming-Fuelers-DetoxifAI'
+                },
+                {
+                    name: 'bg-[url(/images/browser.webp)]',
                     fullName: 'Browser Upgrade',
                     desc: 'Browser upgrade is a simple Express.js middleware program that redirects users still using Internet Explorer to a page where they can choose from a variety of modern browsers.',
                     tags: [tags.node, tags.html, tags.css, tags.js],
                     imageAlt: 'Image of internet explorer log',
-                    link: 'https://github.com/zahtec/browser-upgrade',
+                    link: 'https://github.com/zahtec/browser-upgrade'
                 },
                 {
-                    name: 'bg-portfolio',
+                    name: 'bg-[url(/images/portfolio.webp)]',
                     fullName: 'This Portfolio',
                     desc: 'This portfolio shows off some of my best frontend skills, the animations and backend are superior and I hope you like it!',
                     tags: [tags.node, tags.nextjs, tags.react, tags.tailwind, tags.html, tags.css, tags.js],
-                    imageAlt: 'Image of the homepage of this portfolio',
+                    imageAlt: 'Image of the homepage of this portfolio'
                 },
                 {
-                    name: 'bg-trollpy',
+                    name: 'bg-[url(/images/trollpy.webp)]',
                     fullName: 'Trollpy',
                     desc: 'Trollpy is a Python lbrary that contains a collection of functions that are meant to override built-in functions or ones on commonly used libraries. It is used to mess with developers sometimes, not in a malicious way.',
                     tags: [tags.python],
                     imageAlt: 'Image of the homepage of this portfolio',
                     link: 'https://github.com/zahtec/trollpy',
-                    overlay: false,
-                },
-            ],
-        },
+                    overlay: false
+                }
+            ]
+        }
     };
 }
 
@@ -185,7 +207,7 @@ export default function Projects({ projects }: { projects: StoredProject[] }) {
                     {projects.map(project => {
                         return <Project {...project} key={project.name} />;
                     })}
-                    <div className="load-anim flex w-full rounded-xl justify-center flex-col mb-20 relative overflow-hidden leading-7 bg-unknown bg-no-repeat bg-center bg-cover">
+                    <div className="load-anim flex w-full rounded-xl justify-center flex-col mb-20 relative overflow-hidden leading-7 bg-[url(/images/unknown.webp)] bg-no-repeat bg-center bg-cover">
                         <div className="h-full w-full bg-project from-accent pt-60 px-4 pb-4 dding">
                             <div className="flex items-center">
                                 <h1 className="text-3xl sm:text-4xl">???</h1>
