@@ -72,7 +72,7 @@ export function getStaticProps(): { props: { skills: StoredSkill[] } } {
                 {
                     name: 'js',
                     fullName: 'JavaScript/TypeScript',
-                    desc: 'avaScript is an object-oriented high-level programming language primarily used for the frontend resposiveness and interactive UX of websites. Typescript is a superset of javascript adding typing functionality.',
+                    desc: 'JavaScript is an object-oriented high-level programming language primarily used for the frontend resposiveness and interactive UX of websites. Typescript is a superset of JavaScript adding typing functionality.',
                     fontaw: 'js-square',
                     color: ['from-yellow', 'to-yellow-dark', 'border-yellow']
                 },
